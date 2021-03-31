@@ -26,20 +26,9 @@ wd = "/media/vegveg/bedlam/michmap/michmap/"
 os.chdir(wd)
 # path to api
 API = 'https://lpdaacsvc.cr.usgs.gov/appeears/api/' 
-# set task id (from request JSON)
-# note: can also pair this with api data request, can pull tast_id straight from 
-# data request
-year = 2016
-# specify sensor prefix
-if year < 2013:
-    sensor = "LT05"
-elif year > 2013: 
-    sensor = "LC08"
-else: 
-    raise ValueError('Year not valid. Must be int.')
-    
+
 # import json
-req_params = open("../data/" + str(year) + "/mimap-" + str(year) + "-request.json")
+req_params = open("../data/" + str(year) + "/-request.json")
 req_params = json.loads(req_params.read())
 # get task id
 task_id = req_params['task_id']
